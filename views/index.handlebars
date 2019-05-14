@@ -1,5 +1,7 @@
 <h1>Burgers!</h1>
 
+<div id="burger-image"></div>
+
 
 <h2>Add a Burger</h2>
 <form class="create-form">
@@ -8,12 +10,6 @@
     <label for="ca">Burger Name:</label>
     <input type="text" id="burger-text" name="burger_name">
   </div>
-{{!-- 
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="devoured" value="1" > Sleepy!<br>
-    <input type="radio" name="devoured" value="0" checked> Awake
-  </div> --}}
 
   <button type="submit">Add Burger</button>
 </form>
@@ -24,15 +20,10 @@
 <ul>
   {{!-- Call table name burgers --}}
   {{#each burgers}}
+  {{! unless = false for devoured db column values}}
     {{#unless devoured}}
-
-      <div class="devour">
-      <p><span class="label">Burger #{{this.id}}</span>. {{this.burger_name}}</p>
-      <button type="submit" id="devour-me" data-id="{{id}}" data-devoured="{{devoured}}">Devour dat burger!</button>
-      {{!-- <p><span class="label">Burger Name:</span> {{this.burger_name}}</p>
-      <p><span class="label">Burger Devoured:</span> {{this.devoured}}</p> --}}
-
-  </div>
+    {{! calls burger-block.handlebars html in root of partials folder}}
+      {{>burger-block}}
     {{/unless}}
   {{/each}}
 
@@ -43,16 +34,10 @@
 
 <ul>
   {{#each burgers}}
+  {{! id = true for devoured db column value}}
     {{#if devoured}}
       
-
-      <div class="devour">
-      <p><span class="label">Burger #{{this.id}}</span>. {{this.burger_name}}</p>
-      <button type="submit" id="devour-me" data-id="{{id}}" data-devoured="{{devoured}}">Devour dat burger!</button>
-      {{!-- <p><span class="label">Burger Name:</span> {{this.burger_name}}</p>
-      <p><span class="label">Burger Devoured:</span> {{this.devoured}}</p> --}}
-
-  </div>
+      {{>burger-block}}
 
 
     {{/if}}

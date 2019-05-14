@@ -17,4 +17,8 @@ li {
   .form-group {
     margin-bottom: 5px;
   }
+
+  #burger-image {
+    background-image: url("../img/burger.png")
+  }
   
